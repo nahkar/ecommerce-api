@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    container_name: ecommerce-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '8088:8088'
+    environment:
+      PORT: ${PORT}
+      DATABASE_URL: ${DATABASE_URL}
