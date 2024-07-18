@@ -10,4 +10,6 @@ export class User {
 	first_name: string;
 	@Field()
 	last_name: string;
+	@Field()
+	password: string;
 }
