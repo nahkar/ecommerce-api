@@ -5,8 +5,23 @@
 type User {
   user_id: ID!
   email: String!
+  first_name: String!
+  last_name: String!
+  password: String!
+}
+
+type Category {
+  category_id: ID!
+  name: String!
+}
+
+type Product {
+  product_id: ID!
+  name: String!
 }
 
 type Query {
   users: [User!]!
+  categories: [Category!]!
+  product: [Product!]!
 }
