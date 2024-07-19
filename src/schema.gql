@@ -33,3 +33,7 @@ type Query {
   categories: [Category!]!
   product: [Product!]!
 }
+
+type Mutation {
+  createUser(first_name: String!, last_name: String!, password: String!, email: String!): User!
+}

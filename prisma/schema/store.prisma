@@ -2,5 +2,5 @@ model Store {
   store_id String @id @default(uuid())
   name   String @unique
   address   String
-  logo   String
+  logo   String?
 }
