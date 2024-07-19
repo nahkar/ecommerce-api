@@ -6,6 +6,7 @@ import { UserModule } from 'modules/user/user.module';
 import configuration from '@config/configuration';
 import { CategoryModule } from 'modules/category/category.module';
 import { ProductModule } from 'modules/product/product.module';
+import { StoreModule } from 'modules/store/store.module';
 
 const { ENV } = configuration();
 
@@ -18,6 +19,7 @@ const { ENV } = configuration();
 			playground: ENV !== 'production',
 		}),
 		UserModule,
+		StoreModule,
 		CategoryModule,
 		ProductModule,
 	],
