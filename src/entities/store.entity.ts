@@ -7,10 +7,12 @@ export class Store {
 	store_id: string;
 	@Field()
 	name: string;
-	@Field()
-	address: string;
 	@Field({ nullable: true })
-	logo: string;
-	@Field(() => User, { nullable: true })
-	store: User;
+	address?: string;
+	@Field({ nullable: true })
+	logo?: string;
+	@Field(() => User)
+	user: User;
+	@Field(() => ID)
+	user_id: string;
 }

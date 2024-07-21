@@ -3,39 +3,42 @@
 # ------------------------------------------------------
 
 type Store {
-  store_id: ID!
-  name: String!
-  address: String!
-  logo: String
-  store: User
+	store_id: ID!
+	name: String!
+	address: String
+	logo: String
+	user: User!
+	user_id: ID!
 }
 
 type User {
-  user_id: ID!
-  email: String!
-  first_name: String!
-  last_name: String!
-  password: String!
-  stores: [Store!]!
+	user_id: ID!
+	email: String!
+	first_name: String!
+	last_name: String!
+	password: String!
+	stores: [Store!]!
 }
 
 type Category {
-  category_id: ID!
-  name: String!
+	category_id: ID!
+	name: String!
 }
 
 type Product {
-  product_id: ID!
-  name: String!
+	product_id: ID!
+	name: String!
 }
 
 type Query {
-  users: [User!]!
-  stores: [Store!]!
-  categories: [Category!]!
-  product: [Product!]!
+	users: [User!]!
+	user(user_id: String!): User!
+	stores: [Store!]!
+	categories: [Category!]!
+	product: [Product!]!
 }
 
 type Mutation {
-  createUser(first_name: String!, last_name: String!, password: String!, email: String!): User!
+	createUser(first_name: String!, last_name: String!, password: String!, email: String!): User!
+	createStore(name: String!, address: String, logo: String, user_id: ID!): Store!
 }

@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { UserResolver } from './user.resolver';
 import { UserService } from './user.service';
 import { UserRepository } from './user.repository';
 import { PrismaClient } from '@prisma/client';
+import { StoreModule } from 'modules/store/store.module';
 
 @Module({
 	providers: [
@@ -14,5 +15,7 @@ import { PrismaClient } from '@prisma/client';
 			useValue: new PrismaClient(),
 		},
 	],
+	exports: [UserService],
+	imports: [forwardRef(() => StoreModule)],
 })
 export class UserModule {}

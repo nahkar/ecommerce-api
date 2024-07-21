@@ -9,6 +9,10 @@ export class UserRepository {
 		return this.prisma.user.findMany();
 	}
 
+	findOne(user_id: string) {
+		return this.prisma.user.findUnique({ where: { user_id } });
+	}
+
 	create(user: CreateUserArgs) {
 		return this.prisma.user.create({ data: user });
 	}

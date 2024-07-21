@@ -9,6 +9,10 @@ export class UserService {
 		return this.userRepository.find();
 	}
 
+	getUserById(user_id: string) {
+		return this.userRepository.findOne(user_id);
+	}
+
 	createUser(user: CreateUserArgs) {
 		return this.userRepository.create(user);
 	}
