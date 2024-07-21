@@ -1,6 +1,10 @@
 model Store {
-  store_id String @id @default(uuid())
-  name   String @unique
-  address   String
-  logo   String?
+  store_id   String   @id @default(uuid())
+  name       String   @unique
+  address    String
+  logo       String?
+  user       User     @relation(fields: [user_id], references: [user_id])
+  user_id    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }

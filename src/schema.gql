@@ -2,12 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Store {
+  store_id: ID!
+  name: String!
+  address: String!
+  logo: String
+  store: User
+}
+
 type User {
   user_id: ID!
   email: String!
   first_name: String!
   last_name: String!
   password: String!
+  stores: [Store!]!
 }
 
 type Category {
@@ -18,13 +27,6 @@ type Category {
 type Product {
   product_id: ID!
   name: String!
-}
-
-type Store {
-  store_id: ID!
-  name: String!
-  address: String!
-  logo: String
 }
 
 type Query {

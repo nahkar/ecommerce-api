@@ -1,4 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Store } from './store.entity';
 
 @ObjectType()
 export class User {
@@ -12,4 +13,6 @@ export class User {
 	last_name: string;
 	@Field()
 	password: string;
+	@Field(() => [Store], { defaultValue: [] })
+	stores: Store[];
 }

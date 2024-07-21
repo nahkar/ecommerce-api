@@ -1,7 +1,10 @@
 model User {
-  user_id    String @id @default(uuid())
-  email      String @unique
+  user_id    String   @id @default(uuid())
+  email      String   @unique
   first_name String
   last_name  String
   password   String
+  store      Store[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
