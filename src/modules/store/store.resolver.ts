@@ -4,7 +4,6 @@ import { StoreService } from './store.service';
 import { CreateStoreArgs } from './dto/create-store.args';
 import { User } from '@entities/user.entity';
 import { UserService } from 'modules/user/user.service';
-import { Category } from '@entities/category.entity';
 import { CategoryService } from 'modules/category/category.service';
 
 @Resolver(() => Store)
