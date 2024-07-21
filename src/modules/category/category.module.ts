@@ -4,6 +4,7 @@ import { CategoryService } from './category.service';
 import { CategoryRepository } from './category.repository';
 import { PrismaClient } from '@prisma/client';
 import { StoreModule } from 'modules/store/store.module';
+import { ProductModule } from 'modules/product/product.module';
 
 @Module({
 	providers: [
@@ -16,6 +17,6 @@ import { StoreModule } from 'modules/store/store.module';
 		},
 	],
 	exports: [CategoryService],
-	imports: [forwardRef(() => StoreModule)],
+	imports: [forwardRef(() => StoreModule), forwardRef(() => ProductModule)],
 })
 export class CategoryModule {}

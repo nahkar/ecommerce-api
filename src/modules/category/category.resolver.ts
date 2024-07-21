@@ -4,12 +4,14 @@ import { Category } from '@entities/category.entity';
 import { Store } from '@entities/store.entity';
 import { StoreService } from 'modules/store/store.service';
 import { CreateCategoryArgs } from './dto/create-category.args';
+import { ProductService } from 'modules/product/product.service';
 
 @Resolver(() => Category)
 export class CategoryResolver {
 	constructor(
 		private readonly categoryService: CategoryService,
 		private readonly storeService: StoreService,
+		private readonly productService: ProductService,
 	) {}
 
 	@Query(() => [Category])
@@ -18,8 +20,13 @@ export class CategoryResolver {
 	}
 
 	@ResolveField(() => Store)
-	store(@Parent() store: Store) {
-		return this.storeService.getStoreById(store.store_id);
+	store(@Parent() category: Category) {
+		return this.storeService.getStoreById(category.store_id);
+	}
+
+	@ResolveField(() => Store)
+	products(@Parent() category: Category) {
+		return this.productService.getProductsByCategoryId(category.category_id);
 	}
 
 	@Mutation(() => Category)

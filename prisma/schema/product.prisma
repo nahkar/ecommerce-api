@@ -1,6 +1,8 @@
 model Product {
-  product_id String   @id @default(uuid())
-  name       String   @unique
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  product_id  String   @id @default(uuid())
+  name        String   @unique
+  category    Category @relation(fields: [category_id], references: [category_id])
+  category_id String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }

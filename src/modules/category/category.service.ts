@@ -9,6 +9,10 @@ export class CategoryService {
 		return this.categoryRepository.find();
 	}
 
+	getCategoryById(category_id: string) {
+		return this.categoryRepository.findOne(category_id);
+	}
+
 	getCategoriesByStoreId(store_id: string) {
 		return this.categoryRepository.findByStoreId(store_id);
 	}

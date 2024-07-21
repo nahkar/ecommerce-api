@@ -2,10 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Product {
+  product_id: ID!
+  name: String!
+  category: Category!
+  category_id: ID!
+}
+
 type Category {
   category_id: ID!
   name: String!
   store: Store!
+  store_id: ID!
+  products: [Product!]!
 }
 
 type Store {
@@ -27,21 +36,18 @@ type User {
   stores: [Store!]!
 }
 
-type Product {
-  product_id: ID!
-  name: String!
-}
-
 type Query {
   users: [User!]!
   user(user_id: String!): User!
   stores: [Store!]!
   categories: [Category!]!
-  product: [Product!]!
+  products: [Product!]!
+  product(product_id: String!): Product!
 }
 
 type Mutation {
   createUser(first_name: String!, last_name: String!, password: String!, email: String!): User!
   createStore(name: String!, address: String, logo: String, user_id: ID!): Store!
   createCategory(name: String!, store_id: ID!): Category!
+  createProduct(name: String!, category_id: ID!): Product!
 }

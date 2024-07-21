@@ -10,6 +10,10 @@ export class CategoryRepository {
 		return this.prisma.category.findMany();
 	}
 
+	findOne(category_id: string) {
+		return this.prisma.category.findUnique({ where: { category_id } });
+	}
+
 	findByStoreId(store_id: string) {
 		return this.prisma.category.findMany({
 			where: {
