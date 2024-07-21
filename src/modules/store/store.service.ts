@@ -10,6 +10,10 @@ export class StoreService {
 		return this.storeRepository.find();
 	}
 
+	getStoreById(store_id: string) {
+		return this.storeRepository.findOne(store_id);
+	}
+
 	getStoresByUserId(user_id: string) {
 		return this.storeRepository.findStoresByUserId(user_id);
 	}

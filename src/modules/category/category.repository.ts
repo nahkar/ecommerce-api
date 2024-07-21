@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import { CreateCategoryArgs } from './dto/create-category.args';
 
 @Injectable()
 export class CategoryRepository {
@@ -7,5 +8,26 @@ export class CategoryRepository {
 
 	find() {
 		return this.prisma.category.findMany();
+	}
+
+	findByStoreId(store_id: string) {
+		return this.prisma.category.findMany({
+			where: {
+				store_id,
+			},
+		});
+	}
+
+	create({ store_id, ...store }: CreateCategoryArgs) {
+		return this.prisma.category.create({
+			data: {
+				...store,
+				store: {
+					connect: {
+						store_id,
+					},
+				},
+			},
+		});
 	}
 }

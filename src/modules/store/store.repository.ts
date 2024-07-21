@@ -9,6 +9,11 @@ export class StoreRepository {
 	find() {
 		return this.prisma.store.findMany();
 	}
+
+	findOne(store_id: string) {
+		return this.prisma.store.findUnique({ where: { store_id } });
+	}
+
 	findStoresByUserId(user_id: string) {
 		return this.prisma.store.findMany({
 			where: {
@@ -18,6 +23,7 @@ export class StoreRepository {
 			},
 		});
 	}
+
 	create({ user_id, ...store }: CreateStoreArgs) {
 		return this.prisma.store.create({
 			data: {

@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { User } from './user.entity';
+import { Category } from './category.entity';
 
 @ObjectType()
 export class Store {
@@ -15,4 +16,6 @@ export class Store {
 	user: User;
 	@Field(() => ID)
 	user_id: string;
+	@Field(() => [Category], { defaultValue: [] })
+	categories: Category[];
 }

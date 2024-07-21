@@ -4,12 +4,15 @@ import { StoreService } from './store.service';
 import { CreateStoreArgs } from './dto/create-store.args';
 import { User } from '@entities/user.entity';
 import { UserService } from 'modules/user/user.service';
+import { Category } from '@entities/category.entity';
+import { CategoryService } from 'modules/category/category.service';
 
 @Resolver(() => Store)
 export class StoreResolver {
 	constructor(
 		private readonly storeService: StoreService,
 		private readonly userService: UserService,
+		private readonly categoryService: CategoryService,
 	) {}
 
 	@Query(() => [Store])
@@ -20,6 +23,11 @@ export class StoreResolver {
 	@ResolveField(() => User)
 	user(@Parent() store: Store) {
 		return this.userService.getUserById(store.user_id);
+	}
+
+	@ResolveField(() => User)
+	categories(@Parent() store: Store) {
+		return this.categoryService.getCategoriesByStoreId(store.store_id);
 	}
 
 	@Mutation(() => Store)
